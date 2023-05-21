@@ -16,7 +16,25 @@ sap.ui.define([
 	}
 	
 	//Función para filtrar empleados
-	function onSearchEmployee(){
+	function onSearchEmployee(oEvent){
+		    //1º) Crear el array que contendrá el filtro.
+			const aFilter = [];
+			//2º) Recuperar la cadena/s a comparar.
+			// const sQuery = oEvent.getParameter("query");
+			var sQuery = this.getView().byId("id_searchField_Employees").getValue();
+			//3º) Añadir nuevo filtro/s al array.
+			if (sQuery) {
+			aFilter.push(
+				new sap.ui.model.Filter( "FirstName",  sap.ui.model.FilterOperator.Contains,  sQuery ))
+			}
+			//4) Recuperar el listado (Table, List...)
+			const oList = this.getView().byId("idMiLista");
+			//5) Recuperar el bindeo asociado al listado.
+			//'items'→ atributo del componente List/Table donde hemos bindeado el modelo.
+			const oBinding = oList.getBinding("items");
+			//6) Aplicar el array de filtros al objeto bindeo.
+			oBinding.filter(aFilter);
+
 		
 	}
 	

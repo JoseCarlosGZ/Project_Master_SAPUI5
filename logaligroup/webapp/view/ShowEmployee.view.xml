@@ -11,9 +11,11 @@
 			<Page showHeader="false">
 				<Toolbar class="sapUiTinyMarginTop">
 					<Button icon="sap-icon://nav-back" press="onPressBack"></Button>
-					<SearchField liveChange="onSearchEmployee" width="100%" />
+					<SearchField id="id_searchField_Employees" liveChange="onSearchEmployee" width="100%" />
 				</Toolbar>
-				<List itemPress="onSelectEmployee" 
+				<List 
+						id="idMiLista"
+						itemPress="onSelectEmployee" 
 						items="{path:'odataModel>/Users',filters:[{path:'SapId',operator:'EQ',value1:'josecarlosgaza@gmail.com'}]}">
 					<items>
 						<StandardListItem title="{odataModel>FirstName} {odataModel>LastName}" 
